@@ -7,7 +7,9 @@ public class MultiThreadingExample {
 	}
 	
 	public static void main(String[] args) {
-		CounterRunnable CounterA = new CounterRunnable();
+		// This example is for thread runnable
+		
+	/*	CounterRunnable CounterA = new CounterRunnable();
 		Thread worker = new Thread(CounterA,"worker");
 		
 		worker.start();
@@ -20,7 +22,22 @@ public class MultiThreadingExample {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		}while(CounterA.getCounter()<6);
+		}while(CounterA.getCounter()<6);*/
+		
+		// This example is for Thread extende class
+		
+		CounterThread counterB=new CounterThread("CounterB");
+		
+		do{
+			System.out.println("Main thread working "+Thread.currentThread().getName()+" Counter: "+counterB.getCounter());
+			try {
+				counterB.setCounter(counterB.getCounter()+1);;
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}while(counterB.getCounter()<6);
 	}
 
 }
